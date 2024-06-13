@@ -77,7 +77,7 @@ my-profile-management-app/
 1. Clone this project:
 
    ```bash
-     Clone the project: https://github.com/ozkan4186/SAFFRON-_CASE.git
+     Clone the project: https://github.com/ozkan4186/DekaTech_Case.git
    ```
 2. Install the necessary dependencies:
 
