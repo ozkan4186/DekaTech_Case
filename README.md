@@ -1,4 +1,4 @@
-●	SAFFRON Case Study
+●	Deka tecnology Case Study
 
 ## Table of contents
 
@@ -11,29 +11,42 @@
   - [Author](#author)
 
 ## The challenge
-Hello, This is a chat project prepared with React. 
-It is a project prepared by using custom CSS and providing a constant response.
-As a result, by adding an API connection to the project, the ability to get the answers we want to the questions we want can be improved.
-
+-Hello, This project is a React application designed to manage user profiles. The application allows users to list profiles, add new profiles, update existing profiles, and delete profiles. Below is an overview of the project structure and its features. 
+-This project tailwind css,react-router dom ,axios,swr,formik-yup 
+Conclusion
+-This project provides a comprehensive user profile management system using React. It includes API integration for CRUD operations, state management using Context API, and routing using React Router. The application is styled using Tailwind CSS, ensuring a clean and modern user interface. This setup allows users to efficiently manage user profiles within an organization.
+-Mock Api was used as Api
 ## Project Skeleton
 ```
 ●	Rick and Morty Case Study
 |
      
 SOLUTION
-├── public
-│     └── index.html
-├─
-├── src
-│   
-     └── assets
-│    ├── App.css
-│    ├── App.js
-│    ├── index.tsx
-│    └── index.js
+
+my-profile-management-app/
+│
+├── public/
+│   └── index.html
+├── src/
+│   ├── services/
+│   │   └── api.jsx
+│   ├── components/
+│   │   ├── CreateUser.jsx
+│   │   └── Footer.jsx
+        └── Navbar.jsx  
+│   ├── pages/
+│   │   ├── ProfileList.js
+│   │   └── ProfileDetail.js
+│   ├── context/
+│   │   └── UserContext.js
+│   ├── App.js
+│   ├── index.css
+│   └── index.js
+    └── AppRouter.jsx
+├── .gitignore
 ├── package.json
-└── yarn.lock
-|----readme.md  
+└── README.md
+
 ```
 ## Screenshot
 <p align="left">
