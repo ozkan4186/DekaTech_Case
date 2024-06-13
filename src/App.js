@@ -1,12 +1,17 @@
+import React from "react";
+
 import "./App.css";
+
+import AppRouter from "./AppRouter";
+import { UserProvider } from "./contexts/userContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <div>lsalslamsjasmka</div>
-      </header>
-    </div>
+    <UserProvider>
+      <div className="App">
+        <AppRouter />
+      </div>
+    </UserProvider>
   );
 }
 

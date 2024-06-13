@@ -1,11 +1,18 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
+import ReactDOM from "react-dom";
 import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+import "./index.css";
+import AppRouter from "./AppRouter";
+import { UserProvider } from "./contexts/userContext";
+
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <UserProvider>
+      <App>
+        <AppRouter />
+      </App>
+    </UserProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
