@@ -4,6 +4,7 @@ import ProfileList from "./pages/ProfileList";
 import ProfileDetail from "./pages/ProfileDetail";
 import Navbar from "./components/Navbar";
 import CreateUser from "./components/CreateUser";
+import Footer from "./components/Footer";
 
 const AppRouter = () => {
   return (
@@ -14,6 +15,7 @@ const AppRouter = () => {
         <Route path="/profile/:id" element={<ProfileDetail />} />
         <Route path="/create" element={<CreateUser />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };

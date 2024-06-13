@@ -3,9 +3,24 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useMutation } from "swr";
 
 const CreateUser = () => {
   const navigate = useNavigate();
+
+  const createUser = async (values) => {
+    try {
+      const response = await axios.post(
+        "https://666a31ba2e964a6dfed7dd1d.mockapi.io/users",
+        values
+      );
+      console.log("User created:", response.data);
+      // Kullanıcı oluşturulduktan sonra anasayfaya yönlendir
+      navigate("/");
+    } catch (error) {
+      console.error("Error creating user:", error);
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -25,17 +40,7 @@ const CreateUser = () => {
         .required("Role is required"),
     }),
     onSubmit: async (values) => {
-      try {
-        const response = await axios.post(
-          "https://666a31ba2e964a6dfed7dd1d.mockapi.io/users",
-          values
-        );
-        console.log("User created:", response.data);
-        // Kullanıcı oluşturulduktan sonra anasayfaya yönlendir
-        navigate("/");
-      } catch (error) {
-        console.error("Error creating user:", error);
-      }
+      await createUser(values);
     },
   });
 

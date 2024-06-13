@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { mutate } from "swr";
 const baseURL = "https://666a31ba2e964a6dfed7dd1d.mockapi.io/users";
 
 export const getUsers = async () => {
@@ -14,7 +14,19 @@ export const getUsers = async () => {
 
 export const createUser = async (userData) => {
   try {
+    // Yeni kullanıcıyı oluştur
     const response = await axios.post(baseURL, userData);
+
+    // Yeni kullanıcıyı verilere ekleyerek sayfayı yenilemeden güncelle
+    mutate(
+      baseURL,
+      async (data) => {
+        const updatedData = [...data, response.data];
+        return updatedData;
+      },
+      false
+    );
+
     return response.data;
   } catch (error) {
     console.error("Error creating user:", error);
@@ -25,6 +37,8 @@ export const createUser = async (userData) => {
 export const updateUser = async (userId, userData) => {
   try {
     const response = await axios.put(`${baseURL}/${userId}`, userData);
+    // Veri güncellendikten sonra, verileri yeniden getirmek için mutate kullanın
+    mutate(baseURL);
     return response.data;
   } catch (error) {
     console.error("Error updating user:", error);
@@ -35,6 +49,8 @@ export const updateUser = async (userId, userData) => {
 export const deleteUser = async (userId) => {
   try {
     await axios.delete(`${baseURL}/${userId}`);
+    // Veri silindikten sonra, verileri yeniden getirmek için mutate kullanın
+    mutate(baseURL);
     return true;
   } catch (error) {
     console.error("Error deleting user:", error);
