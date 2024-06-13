@@ -12,7 +12,7 @@
 
 ## The challenge
 -Hello, This project is a React application designed to manage user profiles. The application allows users to list profiles, add new profiles, update existing profiles, and delete profiles. Below is an overview of the project structure and its features. 
--This project tailwind css,react-router dom ,axios,swr,formik-yup 
+-This project tailwind css,react-router dom ,axios,swr,formik-yup,React-toastify 
 Conclusion
 -This project provides a comprehensive user profile management system using React. It includes API integration for CRUD operations, state management using Context API, and routing using React Router. The application is styled using Tailwind CSS, ensuring a clean and modern user interface. This setup allows users to efficiently manage user profiles within an organization.
 -Mock Api was used as Api
@@ -68,7 +68,8 @@ my-profile-management-app/
 - `@JavaScript`
 - `@Tailwind Css`
 -  `@Formik-yup`
--  `Axios` 
+-  `Axios`
+-  `React-Toastify`
 
 
 
