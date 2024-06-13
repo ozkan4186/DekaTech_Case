@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 
 import "./App.css";
@@ -10,6 +12,7 @@ function App() {
     <UserProvider>
       <div className="App">
         <AppRouter />
+        <ToastContainer />
       </div>
     </UserProvider>
   );

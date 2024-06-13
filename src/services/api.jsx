@@ -1,5 +1,6 @@
 import axios from "axios";
 import { mutate } from "swr";
+import { toastWarnNotify } from "../helpers/ToastNotify";
 const baseURL = "https://666a31ba2e964a6dfed7dd1d.mockapi.io/users";
 
 export const getUsers = async () => {
@@ -27,7 +28,7 @@ export const createUser = async (userData) => {
 
     return response.data;
   } catch (error) {
-    console.error("Error creating user:", error);
+    toastWarnNotify("Edit succesfull");
     return null;
   }
 };

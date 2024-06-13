@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/userContext";
 import { updateUser, deleteUser } from "../services/api";
-
+import { toastWarnNotify } from "../helpers/ToastNotify";
 const ProfileDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -32,6 +32,7 @@ const ProfileDetail = () => {
       const updatedUsers = users.map((user) =>
         user.id === id ? updatedUser : user
       );
+      toastWarnNotify("Edit succesfull");
       setUsers(updatedUsers);
       setIsEditing(false);
     }
@@ -41,6 +42,7 @@ const ProfileDetail = () => {
     const isDeleted = await deleteUser(id);
     if (isDeleted) {
       const filteredUsers = users.filter((user) => user.id !== id);
+      toastWarnNotify("Delete succesfull");
       setUsers(filteredUsers);
       navigate("/");
     }
