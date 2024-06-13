@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useMutation } from "swr";
+import { toastWarnNotify } from "../helpers/ToastNotify";
 
 const CreateUser = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const CreateUser = () => {
       console.log("User created:", response.data);
       // Kullanıcı oluşturulduktan sonra anasayfaya yönlendir
       navigate("/");
+      toastWarnNotify("Create succesfull");
     } catch (error) {
       console.error("Error creating user:", error);
     }
