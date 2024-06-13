@@ -95,19 +95,24 @@ const CreateUser = () => {
           >
             Role:
           </label>
-          <input
-            type="text"
+          <select
             id="role"
             name="role"
             {...formik.getFieldProps("role")}
             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
+          >
+            <option value="">Select a role</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+            <option value="guest">Guest</option>
+          </select>
           {formik.touched.role && formik.errors.role ? (
             <div className="text-red-600 text-sm mt-1">
               {formik.errors.role}
             </div>
           ) : null}
         </div>
+
         <button
           type="submit"
           className="inline-flex justify-center mx-8 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
