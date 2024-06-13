@@ -12,25 +12,25 @@ const ProfileList = () => {
       : users.filter((user) => user.role === selectedRole);
 
   return (
-    <div className="max-w-lg mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Profile List</h1>
+    <div className="max-w-4xl mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-6 text-center">Profile List</h1>
       <Link
         to="/create"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-block"
       >
         Create New User
       </Link>
-      <div className="mb-4">
+      <div className="mb-6">
         <label
           htmlFor="role"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium text-gray-700 mb-2"
         >
           Filter by Role:
         </label>
         <select
           id="role"
           name="role"
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           value={selectedRole}
           onChange={(e) => setSelectedRole(e.target.value)}
         >
@@ -40,34 +40,40 @@ const ProfileList = () => {
           <option value="guest">Guest</option>
         </select>
       </div>
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
-          <tr>
-            <th
-              scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Name
-            </th>
-            <th
-              scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Email
-            </th>
-            <th
-              scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Role
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-          {filteredUsers.map((user) => {
-            return (
+      <div className="overflow-x-auto">
+        <table className="w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th
+                scope="col"
+                className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6"
+              >
+                Name
+              </th>
+              <th
+                scope="col"
+                className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6"
+              >
+                Email
+              </th>
+              <th
+                scope="col"
+                className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6"
+              >
+                Role
+              </th>
+              <th
+                scope="col"
+                className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6"
+              >
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {filteredUsers.map((user) => (
               <tr key={user.id}>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-2 py-4 whitespace-nowrap sm:px-6">
                   <Link
                     to={`/profile/${user.id}`}
                     className="text-indigo-600 hover:text-indigo-900"
@@ -75,17 +81,25 @@ const ProfileList = () => {
                     {user.name}
                   </Link>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-gray-500">
+                <td className="px-2 py-4 whitespace-nowrap text-gray-500 sm:px-6">
                   {user.email}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-gray-500">
+                <td className="px-2 py-4 whitespace-nowrap text-gray-500 sm:px-6">
                   {user.role}
                 </td>
+                <td className="px-2 py-4 whitespace-nowrap sm:px-6">
+                  <Link
+                    to={`/profile/${user.id}`}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    Profile Detail
+                  </Link>
+                </td>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CreateUser = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +20,8 @@ const CreateUser = () => {
         }
       );
       console.log("User created:", response.data);
-      // Burada kullanıcı oluşturulduğunda yapılacak işlemleri ekleyebilirsiniz, örneğin kullanıcı listesini güncellemek gibi
+      // Kullanıcı oluşturulduktan sonra anasayfaya yönlendir
+      navigate("/");
     } catch (error) {
       console.error("Error creating user:", error);
     }
