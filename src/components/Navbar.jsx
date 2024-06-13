@@ -22,7 +22,7 @@ const Navbar = () => (
 
                 <a
                   className="text-white items-center flex max-w-full w-24 min-[769px]:w-24"
-                  href="https://soapycosmetics.com/"
+                  href="https://dekatechs.com/"
                   id="a-1"
                   style={{
                     wordBreak: "break-word",
@@ -70,11 +70,7 @@ const Navbar = () => (
             <div className="items-center flex-grow justify-end flex text-white">
               <div id="div-2">
                 <div className="items-center flex">
-                  <a
-                    className="items-center py-4 px-3 flex"
-                    href="https://soapycosmetics.com/search"
-                    id="a-8"
-                  >
+                  <a className="items-center py-4 px-3 flex" href="#" id="a-8">
                     <svg
                       className="cursor-pointer inline-block w-7 h-7"
                       fill="rgb(255, 255, 255)"
@@ -94,11 +90,7 @@ const Navbar = () => (
                       Ara
                     </span>
                   </a>
-                  <a
-                    className="items-center py-4 px-3 flex"
-                    href="https://soapycosmetics.com/account"
-                    id="a-9"
-                  >
+                  <a className="items-center py-4 px-3 flex" href="#" id="a-9">
                     <svg
                       className="cursor-pointer inline-block w-7 h-7"
                       fill="rgb(255, 255, 255)"
@@ -121,11 +113,7 @@ const Navbar = () => (
                       Hesap
                     </span>
                   </a>
-                  <a
-                    className="items-center py-4 px-3 flex"
-                    href="https://soapycosmetics.com/cart"
-                    id="a-10"
-                  >
+                  <a className="items-center py-4 px-3 flex" href="#" id="a-10">
                     <span className="cursor-pointer inline-block">
                       <svg
                         className="inline-block w-7 h-7"

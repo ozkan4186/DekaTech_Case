@@ -29,18 +29,28 @@ const ProfileList = () => {
         >
           Filter by Role:
         </label>
-        <select
-          id="role"
-          name="role"
-          className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          value={selectedRole}
-          onChange={(e) => setSelectedRole(e.target.value)}
-        >
-          <option value="all">All</option>
-          <option value="admin">Admin</option>
-          <option value="user">User</option>
-          <option value="guest">Guest</option>
-        </select>
+        <div className="relative w-full sm:w-auto">
+          <select
+            id="role"
+            name="role"
+            className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            value={selectedRole}
+            onChange={(e) => setSelectedRole(e.target.value)}
+          >
+            <option className="border border-blue-900" value="all">
+              All
+            </option>
+            <option className="sm:w-4" value="admin">
+              Admin
+            </option>
+            <option className="sm:w-4" value="user">
+              User
+            </option>
+            <option className=" sm:w-4" value="guest">
+              Guest
+            </option>
+          </select>
+        </div>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full divide-y divide-gray-200">

@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-gray-800 text-gray-300 py-4 absolute bottom-0 w-full">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="mb-2 md:mb-0">
-          <p>&copy; 2024 Your Company. All Rights Reserved.</p>
+          <p>&copy; 2024 Deka Teknnology . All Rights Reserved.</p>
         </div>
         <div>
           <ul className="flex space-x-4">

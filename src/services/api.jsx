@@ -14,10 +14,8 @@ export const getUsers = async () => {
 
 export const createUser = async (userData) => {
   try {
-    // Yeni kullanıcıyı oluştur
     const response = await axios.post(baseURL, userData);
 
-    // Yeni kullanıcıyı verilere ekleyerek sayfayı yenilemeden güncelle
     mutate(
       baseURL,
       async (data) => {
@@ -37,7 +35,7 @@ export const createUser = async (userData) => {
 export const updateUser = async (userId, userData) => {
   try {
     const response = await axios.put(`${baseURL}/${userId}`, userData);
-    // Veri güncellendikten sonra, verileri yeniden getirmek için mutate kullanın
+
     mutate(baseURL);
     return response.data;
   } catch (error) {
@@ -49,7 +47,7 @@ export const updateUser = async (userId, userData) => {
 export const deleteUser = async (userId) => {
   try {
     await axios.delete(`${baseURL}/${userId}`);
-    // Veri silindikten sonra, verileri yeniden getirmek için mutate kullanın
+
     mutate(baseURL);
     return true;
   } catch (error) {
