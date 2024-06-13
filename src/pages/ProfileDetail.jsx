@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/userContext";
 import { updateUser, deleteUser } from "../services/api";
 import { toastWarnNotify } from "../helpers/ToastNotify";
+import { toastErrorNotify } from "../helpers/ToastNotify";
 const ProfileDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ const ProfileDetail = () => {
       setUsers(updatedUsers);
       setIsEditing(false);
     }
+    toastErrorNotify("Edit unsuccessful");
   };
 
   const handleDeleteUser = async () => {
@@ -46,6 +48,7 @@ const ProfileDetail = () => {
       setUsers(filteredUsers);
       navigate("/");
     }
+    toastErrorNotify("Delete unsuccessful");
   };
 
   return (
