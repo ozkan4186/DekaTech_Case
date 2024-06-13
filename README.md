@@ -51,21 +51,24 @@ my-profile-management-app/
 ## Screenshot
 <p align="left">
 
-![Animation3](https://github.com/ozkan4186/SAFFRON-_CASE/assets/109352349/f8843f51-f258-46fa-ab40-6fed1a92092a)
+
+![Animation](https://github.com/ozkan4186/DekaTech_Case/assets/109352349/48f11826-1b15-4f62-9bc3-f172cdc4ebf7)
 
 
 
 </p>
 ## Links
 <hr>
-<b>Check The Live Website ➡️</b> <a href="https://main--helpful-praline-7fcea2.netlify.app/"> Live Website </a> 
+<b>Check The Live Website ➡️</b> <a href="https://main--wonderful-jalebi-11beb5.netlify.app/"> Live Website </a> 
 <hr>
 
 ### Built with
 
 - `@ReactJs`
 - `@JavaScript`
-- `@Custom Css`
+- `@Tailwind Css`
+-  `@Formik-yup`
+-  `Axios` 
 
 
 
