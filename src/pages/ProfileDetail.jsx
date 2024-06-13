@@ -37,7 +37,6 @@ const ProfileDetail = () => {
       setUsers(updatedUsers);
       setIsEditing(false);
     }
-    toastErrorNotify("Edit unsuccessful");
   };
 
   const handleDeleteUser = async () => {
@@ -48,7 +47,6 @@ const ProfileDetail = () => {
       setUsers(filteredUsers);
       navigate("/");
     }
-    toastErrorNotify("Delete unsuccessful");
   };
 
   return (
