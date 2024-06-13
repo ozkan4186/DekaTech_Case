@@ -10,7 +10,9 @@ const ProfileList = () => {
     selectedRole === "all"
       ? users
       : users.filter((user) => user.role === selectedRole);
-
+  console.log(selectedRole);
+  console.log(filteredUsers);
+  console.log(users);
   return (
     <div className="max-w-4xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">Profile List</h1>

@@ -10,6 +10,7 @@ const ProfileDetail = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState(""); // 1. role state'i
 
   const user = users.find((user) => user.id === id);
 
@@ -17,6 +18,7 @@ const ProfileDetail = () => {
     if (user && isEditing) {
       setName(user.name);
       setEmail(user.email);
+      setRole(user.role); // Mevcut kullanıcının rolünü set et
     }
   }, [user, isEditing]);
 
@@ -25,7 +27,7 @@ const ProfileDetail = () => {
   }
 
   const handleUpdateUser = async () => {
-    const updatedUser = await updateUser(id, { name, email });
+    const updatedUser = await updateUser(id, { name, email, role }); // 3. role bilgisini de updateUser'a ekle
     if (updatedUser) {
       const updatedUsers = users.map((user) =>
         user.id === id ? updatedUser : user
@@ -40,7 +42,7 @@ const ProfileDetail = () => {
     if (isDeleted) {
       const filteredUsers = users.filter((user) => user.id !== id);
       setUsers(filteredUsers);
-      navigate("/"); // Navigate to the home page or user list page after deletion
+      navigate("/");
     }
   };
 
@@ -72,6 +74,15 @@ const ProfileDetail = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm mt-2"
           />
+          <label className="block text-sm font-medium text-gray-700 mt-3">
+            Role
+          </label>
+          <input
+            type="text"
+            value={role}
+            onChange={(e) => setRole(e.target.value)} // 2. Role inputu ve state'i güncelle
+            className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm mt-2"
+          />
           <button
             onClick={handleUpdateUser}
             className="mt-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -83,6 +94,8 @@ const ProfileDetail = () => {
         <div className="border rounded-lg p-4 shadow-md mt-8">
           <h1 className="text-2xl font-bold">{user.name}</h1>
           <p className="mt-2">{user.email}</p>
+          <p className="mt-2">{user.role}</p>{" "}
+          {/* Mevcut kullanıcının rolünü göster */}
           <div className="mt-4 flex justify-between">
             <button
               onClick={() => setIsEditing(true)}
