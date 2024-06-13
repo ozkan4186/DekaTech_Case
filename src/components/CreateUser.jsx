@@ -1,36 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const CreateUser = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://666a31ba2e964a6dfed7dd1d.mockapi.io/users",
-        {
-          name,
-          email,
-          role,
-        }
-      );
-      console.log("User created:", response.data);
-      // Kullanıcı oluşturulduktan sonra anasayfaya yönlendir
-      navigate("/");
-    } catch (error) {
-      console.error("Error creating user:", error);
-    }
-  };
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      role: "",
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .max(50, "Name must be 50 characters or less")
+        .required("Name is required"),
+      email: Yup.string()
+        .email("Invalid email address")
+        .required("Email is required"),
+      role: Yup.string()
+        .max(50, "Role must be 50 characters or less")
+        .required("Role is required"),
+    }),
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post(
+          "https://666a31ba2e964a6dfed7dd1d.mockapi.io/users",
+          values
+        );
+        console.log("User created:", response.data);
+        // Kullanıcı oluşturulduktan sonra anasayfaya yönlendir
+        navigate("/");
+      } catch (error) {
+        console.error("Error creating user:", error);
+      }
+    },
+  });
 
   return (
     <div className="max-w-lg mx-auto">
       <h1 className="text-2xl font-bold mb-4">Create User</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={formik.handleSubmit} className="space-y-4">
         <div>
           <label
             htmlFor="name"
@@ -42,10 +54,14 @@ const CreateUser = () => {
             type="text"
             id="name"
             name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            {...formik.getFieldProps("name")}
             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
+          {formik.touched.name && formik.errors.name ? (
+            <div className="text-red-600 text-sm mt-1">
+              {formik.errors.name}
+            </div>
+          ) : null}
         </div>
         <div>
           <label
@@ -58,10 +74,14 @@ const CreateUser = () => {
             type="email"
             id="email"
             name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            {...formik.getFieldProps("email")}
             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
+          {formik.touched.email && formik.errors.email ? (
+            <div className="text-red-600 text-sm mt-1">
+              {formik.errors.email}
+            </div>
+          ) : null}
         </div>
         <div>
           <label
@@ -74,10 +94,14 @@ const CreateUser = () => {
             type="text"
             id="role"
             name="role"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
+            {...formik.getFieldProps("role")}
             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
+          {formik.touched.role && formik.errors.role ? (
+            <div className="text-red-600 text-sm mt-1">
+              {formik.errors.role}
+            </div>
+          ) : null}
         </div>
         <button
           type="submit"
